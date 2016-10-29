@@ -4,4 +4,4 @@ CREATE TABLE employees(
     last_name VARCHAR(40) NOT NULL,
     PRIMARY KEY(id)
 
-)
+);
