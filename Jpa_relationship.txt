@@ -1,0 +1,47 @@
+When using the Java Persistence API(JPA) it is often necessary to create relationship between two entities.
+These relationship are defined with the data model (think database) through the use of foreign keys and 
+within our object model(think java) using annotations to indicate associations. When defining relationship
+of associations within the object model a common task is indentitfying the owning side 
+of the relationship. Identify the owning entry within a relationship is important because the owing
+side is most often, if not always, where the @JoinColumn annotations must be specified.
+
+@Entity
+@Table(name="SERIES")
+public class Series {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="SERIES_ID")
+	private Integer seriesId;
+
+	@Column(name="TITLE")
+	private String title;
+
+	//Accessors...
+}
+
+@Entity
+@Table(name="POST")
+public class Post {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="POST_ID")
+	Integer postId;
+
+	@Column(name="TITLE")
+	String title;
+
+	@Column(name="POST_DATE")
+	Date postDate;
+
+	@ManyToOne
+	@JoinColumn(name="SERIES_ID")
+	private Series series;
+
+	//Accessors...
+}
+
+In the post entity the @JoinColumn annotations is specified 
+obove the field series to denote the foreign key to be used
+to Identify a Post's respective Series.

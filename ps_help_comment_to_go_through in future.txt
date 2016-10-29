@@ -1,0 +1,30 @@
+1. The prerequisite is to install Powershell tools and management object of SQL Server according to the version
+when SQL server was install .
+
+Then in Powershell the 
+        Import-Module sqlps
+will work and to make that meaning to make sure the import of Powershell scripts are available 
+    Set-ExecutionPolicy RemoteSigned
+
+must be set -- this means this will allow only trusted scripts to run on Powershell.
+
+After Importing the sqlps
+        If typed in Powershell 
+            Get-PsProvider 
+
+            we will see all the modules and sqlps as well this is because we imported it via Import-Module sqlps command
+
+            then we can simply cd into virtual directories if required.
+
+
+
+Explanation about he PSScript---
+             $serverPath="SQLSERVER:\SQL\RAHMAN\MOSHIOUR_DB"
+
+            as we can notice this is enviornment specific..
+
+            To see all the available commands in sqlps module the command is 
+
+            
+Get-Command -Module sqlps
+
